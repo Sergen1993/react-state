@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
-
-const ShowCount = ({ value =0 }) => {
-  return <p>You have clicked {value} times.</p>
-}
+import BitcoinIndex from "./BitcoinIndex"
+import CurrencySelector from "./CurrencySelector"
 
 const App = () => {
-  let [count, setCount] = useState(0)
-  console.log(count)
+  const [currency, setCurrency] = useState("AUD")
 
-  return <>
-    <h1>State</h1>
-    <ShowCount value={count} />
-    <button onClick={() => console.log(setCount(count+1))}>Click Me!</button>
-  </>
+  return (  
+    <>
+      <BitcoinIndex currency={currency} />
+      <CurrencySelector currency={currency} setCurrency={setCurrency} />
+    </>
+  )
 }
 
 export default App

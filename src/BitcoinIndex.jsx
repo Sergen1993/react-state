@@ -22,6 +22,7 @@ const BitcoinIndex = ({ currency="AUD" }) => {
     return (
         <>
             <h1>BitcoinIndex</h1>
+            
             {price ? <p>Current Price ({currency}): {price}</p> : <p>Loading ...</p>}
         </>
     )
