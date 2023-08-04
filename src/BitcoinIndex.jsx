@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 
-const BitcoinIndex = () => {
+const BitcoinIndex = ({ currency="AUD" }) => {
     let [price, setPrice] = useState()
 
     // Only triggers on mount
     useEffect(() => {
-        fetch('https://api.coindesk.com/v1/bpi/currentprice/AUD.json')
+        fetch(`https://api.coindesk.com/v1/bpi/currentprice/${currency}.json`)
             .then(res => res.json())
-            .then(data => setPrice(data.bpi.AUD.rate))
-    }, [])
+            .then(data => setPrice(data.bpi[currency].rate))
+
+        // // called on unmount
+        // return () => {
+        //     // cleanup code
+        // }
+    }, [currency])
 
     useEffect(() => console.log('effect triggered on mount or any change'))
 
@@ -17,7 +22,7 @@ const BitcoinIndex = () => {
     return (
         <>
             <h1>BitcoinIndex</h1>
-            {price ? <p>Current Price (AUD): {price}</p> : <p>Loading ...</p>}
+            {price ? <p>Current Price ({currency}): {price}</p> : <p>Loading ...</p>}
         </>
     )
 }

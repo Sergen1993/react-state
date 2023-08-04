@@ -5,5 +5,5 @@ import './index.css'
 import BitcoinIndex from './BitcoinIndex.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BitcoinIndex />
+  <BitcoinIndex currency="TRY"/>
 )
